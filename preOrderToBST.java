@@ -1,69 +1,47 @@
-class IndexTracker {
-    int currentIndex = 0;
-}
-
 public class preOrderToBST {
-    IndexTracker indexTracker = new IndexTracker();
+    // Index to keep track of the current position in pre-order array
+    private int index = 0;
 
-    // Main function to construct the tree
-    TreeNode constructTree(int[] preOrder, int size) {
-        return constructTreeHelper(preOrder, indexTracker, preOrder[0], Integer.MIN_VALUE, Integer.MAX_VALUE, size);
+    public TreeNode bstFromPreOrder(int[] preOrder) {
+        return bstFromPreOrderUtil(preOrder, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    // Helper function to construct the tree
-    TreeNode constructTreeHelper(int[] preOrder, IndexTracker indexTracker, int key, int min, int max, int size) {
-        // If we've used up all elements, return null
-        if (indexTracker.currentIndex >= size) {
+    private TreeNode bstFromPreOrderUtil(int[] preOrder, int lower, int upper) {
+        // Base case: if all elements are covered or the next element is out of current
+        // subtree's range
+        if (index == preOrder.length || preOrder[index] < lower || preOrder[index] > upper) {
             return null;
         }
 
-        TreeNode node = null;
+        // The next value in preOrder array is the root of subtree
+        int value = preOrder[index++];
+        TreeNode root = new TreeNode(value);
 
-        // If the current element can be used to create a new node (i.e., it is within
-        // the current range)
-        if (key > min && key < max) {
-            // Create a new node
-            node = new TreeNode(key);
-            // Move to the next element in preOrder
-            indexTracker.currentIndex = indexTracker.currentIndex + 1;
+        // All next keys that are smaller than value form the left subtree
+        root.left = bstFromPreOrderUtil(preOrder, lower, value);
 
-            // If there are still unused elements
-            if (indexTracker.currentIndex < size) {
-                // Construct the left and right subtrees
-                node.left = constructTreeHelper(preOrder, indexTracker, preOrder[indexTracker.currentIndex], min, key,
-                        size);
-                node.right = constructTreeHelper(preOrder, indexTracker, preOrder[indexTracker.currentIndex], key, max,
-                        size);
-            }
-        }
+        // All next keys that are greater than value form the right subtree
+        root.right = bstFromPreOrderUtil(preOrder, value, upper);
 
-        return node;
+        return root;
     }
 
-    // Given node, prints pre-order traversal of tree
-    public static void preOrder(TreeNode node) {
+    // A utility function to print in-order traversal of the BST
+    public void printInOrder(TreeNode node) {
         if (node == null) {
             return;
         }
+        printInOrder(node.left);
         System.out.print(node.value + " ");
-        preOrder(node.left);
-        preOrder(node.right);
+        printInOrder(node.right);
     }
 
     public static void main(String[] args) {
-        // Pre-order traversal array
-        int[] preOrder = new int[] { 41, 20, 11, 15, 32, 65, 50, 58, 93 };
+        preOrderToBST converter = new preOrderToBST();
+        int[] preOrder = { 8, 5, 1, 7, 10, 12 };
+        TreeNode root = converter.bstFromPreOrder(preOrder);
 
-        // Create an instance of PreOrderToBST
-        preOrderToBST treeBuilder = new preOrderToBST();
-
-        // Construct the tree and get the root
-        TreeNode root = treeBuilder.constructTree(preOrder, preOrder.length);
-
-        System.out.println("Constructed tree!");
-
-        // Print pre-order traversal of the constructed tree
-        System.out.println("Pre-order traversal of the constructed tree:");
-        preOrder(root);
+        System.out.println("In-order traversal of constructed BST:");
+        converter.printInOrder(root);
     }
 }
