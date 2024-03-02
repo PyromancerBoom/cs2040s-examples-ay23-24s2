@@ -4,7 +4,7 @@
 
 These code snippets below are intended to supplement and give a glimpse of how to implement some concepts and solutions.
 
-So, you're encouraged you to use your critical thinking skills while exploring these demos as there might be some better ways to implement these concepts and might differ slightly.
+So, you're encouraged to use your critical thinking skills while exploring these demos as there might be some better ways to implement these concepts and might differ slightly.
 
 Spot any errors or have any suggestions? Feel free to share them by opening an issue :\)
 
