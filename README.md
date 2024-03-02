@@ -1,8 +1,6 @@
-### These are some of the unofficial demos used for tutorials and presentations
-
 ### Demos
 
-These code snippets below are intended to supplement and give a glimpse of how to implement some concepts and solutions.
+These are some of the unofficial demos used for tutorials and presentations. These code snippets below are intended to supplement and give a glimpse of how to implement some concepts and solutions.
 
 So, you're encouraged to use your critical thinking skills while exploring these demos as there might be some better ways to implement these concepts and might differ slightly.
 
