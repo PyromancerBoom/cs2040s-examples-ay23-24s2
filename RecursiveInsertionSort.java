@@ -9,6 +9,7 @@ public class RecursiveInsertionSort {
     public static void insertionSortRecursive(int[] array, int n) {
         /*
          * Uncomment the print lines to see the sorting in action
+         * or feel free to add your own print statements
          */
 
         // System.out.println("Sorting subarray: " +
@@ -29,7 +30,6 @@ public class RecursiveInsertionSort {
         // System.out.println("Inserting " + lastElement + " into sorted subarray: "
         // + Arrays.toString(Arrays.copyOfRange(array, 0, n - 1)));
 
-        // Move elements greater than the last element one position to the right
         while (j >= 0 && array[j] > lastElement) {
             // System.out.println("Shifting " + array[j] + " to the right");
             array[j + 1] = array[j]; // Shift element to the right
@@ -39,12 +39,13 @@ public class RecursiveInsertionSort {
         // Place the last element in its correct position
         array[j + 1] = lastElement;
         // System.out.println("Array after insertion: " + Arrays.toString(array));
-
     }
 
     public static void main(String[] args) {
         // generate a random array
-        int[] randomArr = new int[10];
+        int size = 10; // assuming size >= 0
+
+        int[] randomArr = new int[size];
         for (int i = 0; i < randomArr.length; i++) {
             randomArr[i] = (int) (Math.random() * 100);
         }

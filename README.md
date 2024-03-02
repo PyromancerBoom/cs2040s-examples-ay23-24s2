@@ -1,35 +1,29 @@
-## These are some of the unofficial demos used for tutorials and presentations
+### These are some of the unofficial demos used for tutorials and presentations
 
-## Resources
+### Demos
 
-- [https://github.com/4ndrelim/data-structures-and-algorithms](https://github.com/4ndrelim/data-structures-and-algorithms)
+These code snippets below are intended to supplement and give a glimpse of how to implement some concepts and solutions.
 
-## Tutorial Demos
+So, you're encouraged you to use your critical thinking skills while exploring these demos as there might be some faster/better ways to implement these concepts and might differ slightly.
 
-These code snippets below are intended to supplement and give a glimpse of how to implement some concepts.
+Spot any errors or have any suggestions? Feel free to share them by opening an issue
 
-As such they might differ slightly from official solutions. So, you're encouraged you to use your critical thinking skills while exploring these demos.
-
-If you spot any errors or have any suggestions, feel free to share them with us by opening an issue :)
-
-## Tutorial 1 (Week 3)
+<!-- #### Week 3 -->
 
 - [Binary Search (Recursive)](./BinarySearch.java)
 
-## Tutorial 2 (Week 4)
+<!-- #### Week 4 -->
 
 - [Recursive Insertion Sort](./RecursiveInsertionSort.java)
 - [Stack with an array](./StackWithArray.java)
-<!-- - [Sort a queue with another queue](./QueueSort.java) -->
-- [Iterative Merge Sort](./IterativeMergeSort.java)
+- [Iterative Merge Sort](./IterativeMergeSort.java) (Similar idea for sorting a queue with another queue)
 
-## Tutorial 3 (Week 5)
+<!-- #### Week 5
+- Nothing this week
 
-- [Quick Sort with Hoare's Partition](./QuickSort.java)
+#### Week 6 -->
 
-## Tutorial 4 (Week 6)
-
-- [Pre-Order to BST](./preOrderToBST.java)
 - [DFS and BFS Recursive and Iterative](./Search.java)
-- [Height of Binary Tree](./Tree.java)
-- [TreeNode (Helper Class)](./TreeNode.java)
+- [Height of Binary Tree](./Tree.java), O(n + m)
+- [Pre-Order to BST](./preOrderToBST.java)
+- [TreeNode (To make nodes for above codes)](./TreeNode.java)

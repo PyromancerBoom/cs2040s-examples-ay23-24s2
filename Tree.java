@@ -1,12 +1,19 @@
 import java.util.Arrays;
 
+/*
+ * This is a rather adhoc implementation.
+ * Could be improved(and shortened) by using Hashmaps!
+ * 
+ * Complexity: O(n + m), where n is the number of nodes and m is the number of queries.
+ */
 public class Tree {
     TreeNode root;
     int maxHeight = 0;
-    Integer[] nodeHeights = new Integer[15]; // Height of each node
-    Integer[] nodeDepths = new Integer[15]; // Depth of each node
-    Integer[] maxHeights = new Integer[15]; // Maximum height at each depth
-    Integer[] secondMaxHeights = new Integer[15]; // Second maximum height at each depth
+    Integer[] nodeHeights = new Integer[20]; // Height of each node
+    Integer[] nodeDepths = new Integer[20]; // Depth of each node
+
+    Integer[] maxHeights = new Integer[20]; // Maximum height at each depth
+    Integer[] secondMaxHeights = new Integer[20]; // Second maximum height at each depth
 
     // Depth-First Search to calculate depth of each node
     int dfs_depth(TreeNode node, int depth) {
@@ -21,14 +28,15 @@ public class Tree {
         // Update maxHeights and secondMaxHeights
         int currentHeight = nodeHeights[node.value];
 
+        // Since all nodes are unique, we can use the value of the node as the index
         // If the current height is greater than the maximum height at this depth,
-        // update the maximum and second maximum heights.
+        // update the maximum and second maximum heights
         if (maxHeights[depth] == null || currentHeight > maxHeights[depth]) {
             secondMaxHeights[depth] = maxHeights[depth];
             maxHeights[depth] = currentHeight;
 
             // If the current height is not greater than the maximum height but is greater
-            // than the second maximum height, update the second maximum height.
+            // than the second maximum height, update the second maximum height
         } else if (secondMaxHeights[depth] == null || currentHeight > secondMaxHeights[depth]) {
             secondMaxHeights[depth] = currentHeight;
         }
@@ -36,7 +44,7 @@ public class Tree {
         return Math.max(leftDepth, rightDepth);
     }
 
-    // tree traversal and calculate height of each node
+    // tree traversal (post-order) and calculate height of each node
     int setNodeHeights(TreeNode node) {
         if (node == null) {
             return -1;
@@ -51,21 +59,16 @@ public class Tree {
         return currentHeight;
     }
 
-    // Calculate height of each node
-    int calculateNodeHeights() {
-        return setNodeHeights(root);
-    }
-
-    // Calculate depth of each node
-    void calculateNodeDepths() {
-        dfs_depth(root, 0);
-    }
-
     // Calculate maximum height after removing a subtree rooted at a given node
     int removeSubtree(int nodeValue) {
         // Get the depth and height of the node to be removed.
         int depth = nodeDepths[nodeValue];
         int height = nodeHeights[nodeValue];
+
+        // Edge case: Only one node at the last level
+        if (secondMaxHeights[depth] == null && maxHeights[depth] != null) {
+            return depth - 1;
+        }
 
         // If the height of the node to be removed is the maximum height at its depth,
         // use the second maximum height. Otherwise, use the maximum height
@@ -74,6 +77,18 @@ public class Tree {
         // The maximum height of the tree after removing the subtree is the sum of the
         // depth and height
         return depth + height;
+    }
+
+    /* ------------------------ Some extra helper functions -------------------- */
+
+    // Calculate height of each node
+    int calculateNodeHeights() {
+        return setNodeHeights(root);
+    }
+
+    // Calculate depth of each node
+    void calculateNodeDepths() {
+        dfs_depth(root, 0);
     }
 
     public static void main(String[] args) {
@@ -100,6 +115,10 @@ public class Tree {
         tree.root.left.left.left.left = new TreeNode(11);
         tree.root.left.left.left.right = new TreeNode(12);
 
+        // Level - 6 -> This is one of the edge case
+        tree.root.left.left.left.right.left = new TreeNode(13);
+        // tree.root.left.left.left.right.right = new TreeNode(14);
+
         tree.calculateNodeHeights();
         tree.calculateNodeDepths();
 
@@ -118,16 +137,6 @@ public class Tree {
 
         // remove a sub tree
         System.out.println();
-        System.out.println("Height of 1 after removing sub tree: " + tree.removeSubtree(4));
-    }
-}
-
-class Pair {
-    int first;
-    int second;
-
-    Pair(int first, int second) {
-        this.first = first;
-        this.second = second;
+        System.out.println("Height after removing sub tree: " + tree.removeSubtree(13));
     }
 }

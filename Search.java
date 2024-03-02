@@ -11,14 +11,12 @@ public class Search {
         if (node == null) {
             return;
         }
-
-        // Print the current node's value
         System.out.println(node.value);
 
-        // Recursively call DFS on the left subtree
+        // call DFS on the left subtree
         dfsRecursive(node.left);
 
-        // Recursively call DFS on the right subtree
+        // call DFS on the right subtree
         dfsRecursive(node.right);
     }
 
@@ -29,19 +27,20 @@ public class Search {
             return;
         }
 
-        // Create a stack and add the root node to it
+        // we use this stack for our iterative DFS
         Stack<TreeNode> stack = new Stack<>();
+
+        // push the root node onto the stack
         stack.push(root);
 
-        // While the stack is not empty
         while (!stack.isEmpty()) {
             // Pop the top node from the stack
             TreeNode currentNode = stack.pop();
 
-            // Print the current node's value
+            // print the current node's value
             System.out.println(currentNode.value);
 
-            // Push the node's non-null children onto the stack
+            // push the node's non-null children onto the stack
             if (currentNode.right != null) {
                 stack.push(currentNode.right);
             }
@@ -51,30 +50,29 @@ public class Search {
         }
     }
 
-    // Recursive BFS - Level Order Traversal
+    // Iterative BFS - Level Order Traversal
     public void bfsIterative(TreeNode root) {
         // Base case: if the tree is empty, return
         if (root == null) {
             return;
         }
 
-        // Create a queue and add the root node to it
+        // Similar to iterative DFS, we use a queue instead to keep track of the nodes
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        // While the queue is not empty
         while (!queue.isEmpty()) {
             // Get the size of the current level
             int levelSize = queue.size();
 
-            // Process all nodes of the current level and enqueue their non-null children
+            // process all nodes of the current level and enqueue their non-null children
             for (int i = 0; i < levelSize; i++) {
                 TreeNode currentNode = queue.poll();
 
-                // Print the current node's value
+                // print the current node's value
                 System.out.println(currentNode.value);
 
-                // Enqueue the node's non-null children
+                // enqueue the node's non-null children
                 if (currentNode.left != null) {
                     queue.add(currentNode.left);
                 }
@@ -86,12 +84,15 @@ public class Search {
     }
 
     // Recursive BFS - Level Order Traversal
-    public void bfsRecursive(List<TreeNode> levelNodes) {
+    public void bfsRecursive(List<TreeNode> levelNodes, int level) {
         if (levelNodes.isEmpty()) {
             return;
         }
 
         List<TreeNode> nextLevelNodes = new ArrayList<>();
+
+        // System.out.println("Level " + level); // Uncomment this line to print the
+        // level number
 
         // Process all nodes of the current level and add their non-null children to the
         // next level
@@ -109,21 +110,17 @@ public class Search {
         }
 
         // Recursively call bfs on the next level nodes
-        bfsRecursive(nextLevelNodes);
+        bfsRecursive(nextLevelNodes, level + 1);
     }
 
     public static void main(String[] args) {
         // Pre-order traversal array
         int[] preOrder = new int[] { 41, 20, 11, 15, 32, 65, 50, 58, 93 };
 
-        // Create an instance of PreOrderToBST
         preOrderToBST treeBuilder = new preOrderToBST();
+        TreeNode root = treeBuilder.constructTreeFromPreOrder(preOrder);
 
-        // Construct the tree and get the root
-        TreeNode root = treeBuilder.constructTree(preOrder, preOrder.length);
-
-        // Let's do BFS
-        System.out.println("BFS traversal of the constructed tree:");
+        // Let's do the BFS and DFS traversals
         Search bfsIterative = new Search();
         Search bfsRecursive = new Search();
         Search dfsRecursive = new Search();
@@ -138,7 +135,7 @@ public class Search {
         System.out.println("Recursive BFS:");
         List<TreeNode> levelNodes = new ArrayList<>();
         levelNodes.add(root);
-        bfsRecursive.bfsRecursive(levelNodes);
+        bfsRecursive.bfsRecursive(levelNodes, 0);
         System.out.println();
 
         // Recursive DFS

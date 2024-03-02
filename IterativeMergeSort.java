@@ -1,24 +1,40 @@
 public class IterativeMergeSort {
     public static void mergeSort(int[] array) {
+        if (array == null) {
+            return;
+        }
         int lengthOfArr = array.length;
 
-        // Outer loop runs for different sizes of subarrays to be merged
+        // This loop is responsible for controlling the size of the subarrays that we
+        // are going to merge
+        // We start with size 1 (individual elements), then we merge pairs of elements,
+        // then quadruplets, and so on
+        // similar idea to sort a queue using another queue with merge sort
         for (int size = 1; size < lengthOfArr; size *= 2) {
-            // Inner loop merges subarrays of specified size
-            for (int left = 0; left < lengthOfArr - 1; left += 2 * size) {
-                // Calculate right and mid indices based on subarray size
-                int mid = Math.min(left + size - 1, lengthOfArr - 1);
-                int right = Math.min(mid + size, lengthOfArr - 1);
 
-                // Merge two subarrays
+            // This loop goes through the array, picking two subarrays of the current size
+            // and merging them
+            // The 'left' variable is the starting index of the first subarray
+            for (int left = 0; left < lengthOfArr - 1; left += 2 * size) {
+
+                // 'mid' is the ending index of the first subarray, and 'right' is the ending
+                // index of the second subarray.
+                int mid = left + size - 1;
+                if (mid >= lengthOfArr) {
+                    mid = lengthOfArr - 1;
+                }
+                int right = mid + size;
+                if (right >= lengthOfArr) {
+                    right = lengthOfArr - 1;
+                }
+                // Merge the two subarrays into the original array.
                 merge(array, left, mid, right);
             }
         }
     }
 
     public static void merge(int[] arr, int left, int mid, int right) {
-        // Create temporary arrays for left and right subarrays
-        // aka auxiliary arrays
+        // create temporary arrays for left and right subarrays
         int[] leftArr = new int[mid - left + 1];
         int[] rightArr = new int[right - mid];
 
@@ -63,7 +79,7 @@ public class IterativeMergeSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 2, 1, 4, 3, 6, 5 };
+        int[] arr = { 10, 5, -100, -1, 0, 1, 2, 3, 4, 8, 7, 6, 9 };
         mergeSort(arr);
         System.out.print("Sorted array: ");
         for (int num : arr) {
