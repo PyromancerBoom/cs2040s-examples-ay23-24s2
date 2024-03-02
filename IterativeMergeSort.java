@@ -1,4 +1,5 @@
 public class IterativeMergeSort {
+    // similar idea to sort a queue using another queue with merge sort
     public static void mergeSort(int[] array) {
         if (array == null) {
             return;
@@ -9,7 +10,6 @@ public class IterativeMergeSort {
         // are going to merge
         // We start with size 1 (individual elements), then we merge pairs of elements,
         // then quadruplets, and so on
-        // similar idea to sort a queue using another queue with merge sort
         for (int size = 1; size < lengthOfArr; size *= 2) {
 
             // This loop goes through the array, picking two subarrays of the current size
@@ -54,7 +54,7 @@ public class IterativeMergeSort {
         int j = 0;
         int k = left;
         while (i < leftArr.length && j < rightArr.length) {
-            // compare head of left and right subarrays
+            // compare "head" of left and right subarrays
             if (leftArr[i] <= rightArr[j]) {
                 arr[k] = leftArr[i];
                 i++;

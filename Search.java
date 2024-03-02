@@ -91,8 +91,8 @@ public class Search {
 
         List<TreeNode> nextLevelNodes = new ArrayList<>();
 
-        // System.out.println("Level " + level); // Uncomment this line to print the
-        // level number
+        // Uncomment this line to print the level number
+        // System.out.println("Level " + level);
 
         // Process all nodes of the current level and add their non-null children to the
         // next level
