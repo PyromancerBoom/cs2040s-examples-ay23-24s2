@@ -13,10 +13,6 @@ class Node {
         isWordComplete = false;
         countOfPrefixStr = 0;
     }
-
-    public int size() {
-        return children.size();
-    }
 }
 
 public class Trie {
