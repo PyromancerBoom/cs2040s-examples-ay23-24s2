@@ -24,3 +24,8 @@ Spot any errors or have any suggestions? Feel free to share them by opening an i
 - [Pre-Order to BST](./preOrderToBST.java)
 - [Height of Binary Tree](./Tree.java), O(n + m)
 - [TreeNode (To make nodes for above codes)](./TreeNode.java)
+
+#### Week 7
+
+- [Trie Implementation](./Trie.java)
+- [Baby Names Problem with Trie](./Names.java)
