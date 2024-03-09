@@ -62,7 +62,7 @@ public class Names {
                 return 0;
             }
         }
-        return gender.equals("male") ? node.countMale : node.countFemale;
+        return gender.equals("female") ? node.countFemale : node.countMale;
     }
 
     public static void main(String[] args) {
