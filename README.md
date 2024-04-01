@@ -34,3 +34,8 @@ Spot any errors or have any suggestions? Feel free to share them by opening an i
 
 - [RandomisedSet](./RandomisedSet.java) (Insert, Delete, GetRandom in O(1))
   Try it out here: https://leetcode.com/problems/insert-delete-getrandom-o1/description/
+
+#### Week 10
+
+- [Counting Stars](./CountingStars.java)
+- [Flying Safely](./flyingsafely.java)

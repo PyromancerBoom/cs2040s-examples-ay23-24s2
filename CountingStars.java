@@ -30,6 +30,7 @@ public class CountingStars {
                 skyMap[row] = inputReader.readLine().toCharArray();
             }
 
+            // THE MAIN LOGIC
             // Count of stars in the current sky map,
             // basically the number of connected
             // components
@@ -78,8 +79,9 @@ public class CountingStars {
 
                 // Check if the new cell is within bounds
                 boolean isWithinBounds = newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols;
+
+                // We can only check the below if its within bounds
                 // check if its a star
-                // We can't use this statement directly, because it will throw an out of bounds
                 // error if the above condition is false
                 // boolean isStar = skyMap[newRow][newCol] == '-';
                 // check if its not visited
