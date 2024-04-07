@@ -8,7 +8,7 @@ Spot any errors or have any suggestions? Feel free to share them by opening an i
 
 #### Week 3
 
-- [Binary Search (Recursive)](./BinarySearch.java)
+- [Binary Search](./BinarySearch.java)
 
 #### Week 4
 
@@ -28,14 +28,20 @@ Spot any errors or have any suggestions? Feel free to share them by opening an i
 #### Week 7
 
 - [Trie Implementation](./Trie.java)
-- [Baby Names Problem with Trie](./Names.java)
+- [Baby Names Problem with Trie](./Names.java), without rank implementation
 
 #### Week 8
 
 - [RandomisedSet](./RandomisedSet.java) (Insert, Delete, GetRandom in O(1))
-  Try it out here: https://leetcode.com/problems/insert-delete-getrandom-o1/description/
+- Try it out here: https://leetcode.com/problems/insert-delete-getrandom-o1/description/
+
+(Nothing for week 9)
 
 #### Week 10
 
 - [Counting Stars](./CountingStars.java)
 - [Flying Safely](./flyingsafely.java)
+
+#### Week 11
+
+- [Dijkstra's Algorithm](./Dijkstra.java)
