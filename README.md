@@ -45,3 +45,11 @@ Spot any errors or have any suggestions? Feel free to share them by opening an i
 #### Week 11
 
 - [Dijkstra's Algorithm](./Dijkstra.java)
+
+#### Week 12
+
+- (Nothing for week 9)
+
+#### Week 13
+
+- Extra problem, for fun - [On Average They're Purple](./onaveragetheyrepurple.java)
