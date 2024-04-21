@@ -1,6 +1,8 @@
 ### Demos
 
-These are some of the unofficial demos used for tutorials and presentations. These code snippets below are intended to supplement and give a glimpse of how to implement some concepts and solutions.
+CS2040S Semester 2, 2023 - 2024
+
+These are some of the unofficial demos used for tutorials. These code snippets below are intended to supplement and give a glimpse of how to implement some concepts and solutions.
 
 So, you're encouraged to use your critical thinking skills while exploring these demos as there might be some better ways to implement these concepts and might differ slightly.
 
@@ -53,3 +55,5 @@ Spot any errors or have any suggestions? Feel free to share them by opening an i
 #### Week 13
 
 - Extra problem, for fun - [On Average They're Purple](./onaveragetheyrepurple.java)
+
+#### All the best! 🎉
